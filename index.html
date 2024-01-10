@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <div class="date">
+                    <span id="day"></span>
+                    <span>/</span>
+                    <span id="month"></span>
+                    <span>/</span>
+                    <span id="year"></span>
+            </div>
+                <span id="hour">00</span>
+                <span>:</span>
+                <span id="min">00</span>
+                <span>:</span>
+                <span id="sec">00</span>
+            <div class="city">
+                <span>
+                    Yangon, Myanmar
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let d = document.querySelector('#day');
+            let m = document.querySelector('#month');
+            let y = document.querySelector('#year');
+
+            let hr = document.querySelector('#hour');
+            let mins = document.querySelector('#min');
+            let secs = document.querySelector('#sec');
+            
+            setInterval(() => {        
+                let currentTime = new Date();
+                
+                d.innerHTML = (currentTime.getDate()<3?"0":"") + currentTime.getDate();
+                m.innerHTML =  (currentTime.getMonth()<1?"0":"") + currentTime.getMonth();
+                y.innerHTML = currentTime.getFullYear().toString().slice(-2);
+
+
+                hr.innerHTML = (currentTime.getHours()< 10?"0":"") + currentTime.getHours();
+                mins.innerHTML = (currentTime.getMinutes()< 10?"0":"") + currentTime.getMinutes();
+                secs.innerHTML = (currentTime.getSeconds()< 10?"0":"") + currentTime.getSeconds();
+            }, 1000);
+        })
+    </script>
+</body>
+</html>
